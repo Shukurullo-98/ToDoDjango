@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-lv4d#3^f=_*_2pj1r9r5gj^4iz&*8cei_kdy+i6lzx+ztmum7p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['to-do--django.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +82,8 @@ DATABASES = {
     }
 }
 
-
+MIDDLEWARE_CLASSES = 'whitenoise.middleware.WhiteNoiseMiddleware'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
